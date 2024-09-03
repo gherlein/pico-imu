@@ -21,12 +21,15 @@ pico_enable_stdio_uart(main 1)
 target_include_directories(main PRIVATE
         ${CMAKE_CURRENT_LIST_DIR}
         src
-        imulib/include
-        imulib/sh2
-        imulib/src
+        pico-imulib/include
+        pico-imulib/sh2
+        pico-imulib/src
+        pico-i2clib/include
+
 )
 
-add_subdirectory(imulib)
+add_subdirectory(pico-imulib)
+add_subdirectory(pico-i2clib)
 
 #add_library(imulib STATIC IMPORTED)
 #set_target_properties(imulib PROPERTIES
@@ -42,7 +45,8 @@ target_link_libraries(main
     pico_multicore
     hardware_irq
     hardware_i2c
-    imulib
+    pico-imulib
+    pico-i2clib
 	# other libs as needed
 )
 

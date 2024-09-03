@@ -11,10 +11,13 @@
 
 #include <bno085_imu.h>
 
+i2c_inst_t *i2c;
+
 int main()
 {
     bi_decl(bi_program_description("PROJECT DESCRIPTION"));
 
     stdio_init_all();
-    run_bno085();
-}
+    i2c = pico_init_i2c(i2c_default, 100 * 1000, PICO_DEFAULT_I2C_SDA_PIN, PICO_DEFAULT_I2C_SCL_PIN);
+    scan_i2c(i2c);
+    run_bno085(i2c);
