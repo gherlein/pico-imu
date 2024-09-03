@@ -21,12 +21,21 @@ pico_enable_stdio_uart(main 1)
 target_include_directories(main PRIVATE
         ${CMAKE_CURRENT_LIST_DIR}
         src
-        imulib
-        imulib/src
+        imulib/include
         imulib/sh2
-        # add other folders as needed
+        imulib/src
 )
+
 add_subdirectory(imulib)
+
+#add_library(imulib STATIC IMPORTED)
+#set_target_properties(imulib PROPERTIES
+#  IMPORTED_LOCATION "${CMAKE_SOURCE_DIR}/lib/libbar.so"
+#  INTERFACE_INCLUDE_DIRECTORIES "${CMAKE_SOURCE_DIR}/include/libbar"
+#)
+#link_directories(imulib)
+
+
 
 target_link_libraries(main
 	pico_stdlib

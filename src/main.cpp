@@ -9,7 +9,7 @@
 #include "hardware/gpio.h"
 #include "pico/binary_info.h"
 
-#include <bno085.h>
+#include <bno085_imu.h>
 
 int main()
 {
