@@ -27,8 +27,12 @@ target_include_directories(main PRIVATE
         pico-i2clib/include
 )
 
-add_subdirectory(pico-imulib)
-add_subdirectory(pico-i2clib)
+#add_subdirectory(pico-i2clib)
+#add_subdirectory(pico-imulib)
+add_library(pico-i2clib STATIC IMPORTED )
+set_property(TARGET pico-i2clib PROPERTY IMPORTED_LOCATION pico-i2clib/libpico-i2clib.a)
+add_library( pico-imulib  STATIC IMPORTED)
+set_property(TARGET pico-imulib PROPERTY IMPORTED_LOCATION pico-imulib/libpico-imulib.a)
 
 target_link_libraries(main
 	pico_stdlib
