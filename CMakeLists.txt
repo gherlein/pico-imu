@@ -25,26 +25,17 @@ target_include_directories(main PRIVATE
         pico-imulib/sh2
         pico-imulib/src
         pico-i2clib/include
-
 )
 
 add_subdirectory(pico-imulib)
 add_subdirectory(pico-i2clib)
-
-#add_library(imulib STATIC IMPORTED)
-#set_target_properties(imulib PROPERTIES
-#  IMPORTED_LOCATION "${CMAKE_SOURCE_DIR}/lib/libbar.so"
-#  INTERFACE_INCLUDE_DIRECTORIES "${CMAKE_SOURCE_DIR}/include/libbar"
-#)
-#link_directories(imulib)
-
-
 
 target_link_libraries(main
 	pico_stdlib
     pico_multicore
     hardware_irq
     hardware_i2c
+    hardware_gpio
     pico-imulib
     pico-i2clib
 	# other libs as needed
