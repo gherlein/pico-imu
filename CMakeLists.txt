@@ -12,7 +12,7 @@ pico_sdk_init()
 
 add_executable(main    
     ${CMAKE_CURRENT_LIST_DIR}    
-    src/main.cpp
+    src/main.c
 )
 
 pico_enable_stdio_usb(main 0)
@@ -27,12 +27,12 @@ target_include_directories(main PRIVATE
         pico-i2clib/include
 )
 
-#add_subdirectory(pico-i2clib)
-#add_subdirectory(pico-imulib)
-add_library(pico-i2clib STATIC IMPORTED )
-set_property(TARGET pico-i2clib PROPERTY IMPORTED_LOCATION pico-i2clib/libpico-i2clib.a)
-add_library( pico-imulib  STATIC IMPORTED)
-set_property(TARGET pico-imulib PROPERTY IMPORTED_LOCATION pico-imulib/libpico-imulib.a)
+add_subdirectory(pico-i2clib)
+add_subdirectory(pico-imulib)
+#add_library(pico-i2clib STATIC IMPORTED )
+#set_property(TARGET pico-i2clib PROPERTY IMPORTED_LOCATION build/libpico-i2clib.a)
+#add_library( pico-imulib  STATIC IMPORTED)
+#set_property(TARGET pico-imulib PROPERTY IMPORTED_LOCATION build/libpico-imulib.a)
 
 target_link_libraries(main
 	pico_stdlib
