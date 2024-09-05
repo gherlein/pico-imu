@@ -22,7 +22,7 @@ int main()
 
     stdio_init_all();
     printf("i2c default: %x\n", i2c_default);
-    i2c = pico_init_i2c(i2c0, 100 * 1000, 16, 17);
+    i2c = pico_init_i2c(i2c0, 25 * 1000, 16, 17);
     num_devices = pico_scan_i2c(i2c, addrs);
     printf("detected %d devices\n", num_devices);
     for (int x = 0; x < num_devices; x++)
@@ -30,7 +30,7 @@ int main()
         printf("%x ", addrs[x]);
     }
     printf("\n");
-    sleep_ms(5);
+    sleep_ms(500);
     run_bno085(i2c);
     while (1)
     {
