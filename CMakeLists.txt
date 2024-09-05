@@ -29,20 +29,15 @@ target_include_directories(main PRIVATE
 
 add_subdirectory(pico-i2clib)
 add_subdirectory(pico-imulib)
-#add_library(pico-i2clib STATIC IMPORTED )
-#set_property(TARGET pico-i2clib PROPERTY IMPORTED_LOCATION build/libpico-i2clib.a)
-#add_library( pico-imulib  STATIC IMPORTED)
-#set_property(TARGET pico-imulib PROPERTY IMPORTED_LOCATION build/libpico-imulib.a)
 
 target_link_libraries(main
-	pico_stdlib
+    pico_stdlib
     pico_multicore
     hardware_irq
     hardware_i2c
     hardware_gpio
     pico-imulib
     pico-i2clib
-	# other libs as needed
 )
 
 pico_add_extra_outputs(main)
